@@ -1,4 +1,5 @@
 import serial
+import time
 
 ser = serial.Serial(
     port="/dev/ttyUSB0",
@@ -8,7 +9,18 @@ ser = serial.Serial(
     bytesize=serial.EIGHTBITS
 )
 
-ser.write(0x09)
-
 while True:
-    print(ser.read(size=6))
+    try:
+        data = float(ser.read(size=6).decode('utf-8'))
+        print(data)
+    except KeyboardInterrupt:
+        break
+    except:
+        print("Fix error buffer")
+        while True:
+            try:
+                data = float(ser.read(size=6).decode('utf-8'))
+                break
+            except:
+                print("Flush 1 byte, {}".format(ser.read(size=1)))
+                continue
