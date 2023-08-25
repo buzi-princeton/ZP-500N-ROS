@@ -9,7 +9,8 @@ ser = serial.Serial(
     bytesize=serial.EIGHTBITS
 )
 
-while True:
+cur_time = time.time()
+for i in range(100):
     try:
         data = float(ser.read(size=6).decode('utf-8'))
         print(data)
@@ -24,3 +25,4 @@ while True:
             except:
                 print("Flush 1 byte, {}".format(ser.read(size=1)))
                 continue
+print("Elapsed time: {}".format((time.time() - cur_time)*0.01))
