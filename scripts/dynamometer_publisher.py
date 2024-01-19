@@ -30,6 +30,7 @@ def dynamometer_publisher():
         rospy.loginfo(data)
         msg = Float32()
         msg.data = data
+        msg.header.stamp = rospy.Time.now()
         pub.publish(msg)
         rate.sleep()
     
