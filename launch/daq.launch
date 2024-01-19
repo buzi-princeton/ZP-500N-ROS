@@ -1,0 +1,4 @@
+<launch>
+    <node name="zp_500n_pub" pkg="zp_500n_ros" type="dynamometer_publisher.py" output="screen"></node>
+    <!-- <node name="zp_500n_sub" pkg="zp_500n_ros" type="dynamometer_listener.py" output="screen"></node> -->
+</launch>
